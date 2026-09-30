@@ -62,7 +62,7 @@ spec:
             {{- if .Values.config.persistentVolume.existingClaim }}
               {{- $claimName = tpl .Values.config.persistentVolume.existingClaim . }}
             {{- else }}
-              {{- $claimName = printf "%s-config" (include "terraria.fullname" .) }}
+              {{- $claimName = printf "%s-configs" (include "terraria.fullname" .) }}
             {{- end }}
             claimName: {{ $claimName }}
           {{- else }}
