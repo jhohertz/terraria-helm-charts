@@ -253,6 +253,37 @@ world:
     # Volume size limit
     sizeLimit: null
 
+# Relating to the config folder/mount. Not persisting this will result in lost tshock config on restarts
+config:
+  # Persistent volume where the world configs are stored
+  persistentVolume:
+
+    # If a persistent volume should be used to store world configs, otherwise uses emptyDir
+    enabled: true
+
+    # The persistent volume access modes
+    # Must match those of existing PV or dynamic provisioner
+    # Ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+    accessModes:
+      - ReadWriteOnce
+
+    # An existing persistent volume claim name, will be used instead of the default one
+    # If defined, the persistent volume claim must be created manually before volume will be bound
+    existingClaim: null
+
+    # The size of the persistent volume
+    size: 1Gi
+
+    # The volume binding mode
+    # If undefined, the default mode will be used.
+    volumeBindingMode: null
+
+  # Worlds empty dir
+  emptyDir:
+
+    # Volume size limit
+    sizeLimit: null
+
 # Plugins
 #  tshock-only
 plugins:
